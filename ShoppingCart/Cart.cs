@@ -5,7 +5,7 @@ namespace ShoppingCart;
 public class Cart
 {
     public int TotalPrice { get; private set; }
-    public List<Product> Products { get; private set; }
+    public List<Product> Products { get; }
 
     public Cart()
     {

@@ -1,4 +1,4 @@
-﻿namespace ShoppingCart
+﻿namespace ShoppingCartTerje
 {
     internal class SimpleShoppingCartDemo
     {
