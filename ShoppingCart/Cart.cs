@@ -2,65 +2,83 @@
 
 namespace ShoppingCart;
 
+//should contain a list of CartItems
+//needs a method to produce and show the Total Price for the Cart as well as price for multiple
+//.. of the same item. 
 public class Cart
+
 {
     public int TotalPrice { get; private set; }
-    public List<Product> Products { get; }
+    public List<CartItem> ShoppingCart { get; set; }
 
     public Cart()
     {
-        Products = new List<Product>();
+        ShoppingCart = new List<CartItem>();
+        TotalPrice = 0;
     }
 
-    public void Add(Product product)
+    public void Add(CartItem item)
     {
-        if (Products.Contains(product))
+        if (ShoppingCart.Contains(item))
         {
-            product.Quantity++;
+            item.Count++;
         }
         else
         {
-            Products.Add(product);
+            ShoppingCart.Add(item);
         }
-
-        TotalPrice += product.ProductPrice * product.Quantity;
     }
 
-    public void Remove(Product product)
+    public void Remove(CartItem item)
     {
-        if (Products.Contains(product) && Products[Products.IndexOf(product)].Quantity - 1 > 0)
+        if (ShoppingCart.Contains(item) && ShoppingCart[ShoppingCart.IndexOf(item)].Count - 1 > 0)
         {
-            Products[Products.IndexOf(product)].Quantity--;
+            ShoppingCart[ShoppingCart.IndexOf(item)].Count--;
         }
         else
         {
-            Products.Remove(product);
+            ShoppingCart.Remove(item);
         }
-        TotalPrice -= product.ProductPrice * product.Quantity;
+
+        TotalPrice -= item.Product.ProductPrice * item.Count;
     }
 
-    public string Checkout()
+    public void Checkout()
     {
-        var cartInfo = GetCartInfo();
-        return "Du kjøpte:\n" + cartInfo[0] + "\n\n" + "Det kostet deg: " + cartInfo[1];
-    }
-
-    private string[] GetCartInfo()
-    {
-        string[] cart = new string[2];
-        foreach (var p in Products)
-        {
-            if(p.Quantity > 1)
-            {
-                cart[0] +=  p.Quantity +"x " + p.ProductName + " - " + (p.ProductPrice * p.Quantity) + " (" + p.ProductPrice + " per)" + "\n";
-            }
-            else
-            {
-                cart[0] += p.Quantity + "x " + p.ProductName +  " - " + (p.ProductPrice * p.Quantity) + "\n";
-            }
+        
+        Console.WriteLine("Du kjøpte: \n");
+        foreach (var i in ShoppingCart)
+        { 
+            Console.WriteLine($"{i.Product.ProductName} x{i.Count} = {TotalForThisItem(i)}kr ({i.Product.ProductPrice}kr stk)");
+            TotalPrice += i.Product.ProductPrice * i.Count;
         }
-        cart[1] += "\n" + TotalPrice + ",-";
+        Console.WriteLine($"\nDin total er: {TotalPrice}kr. Thank you for shopping with us!");
 
-        return cart;
     }
+
+    private int TotalForThisItem(CartItem i)
+    {
+        int total = 0;
+        total = i.Product.ProductPrice * i.Count;
+        return total;
+    }
+
+//private string[] GetCartInfo()
+    //{
+    //    string[] cart = new string[2];
+    //    foreach (var p in Products)
+    //    {
+    //        if(p.Quantity > 1)
+    //        {
+    //            cart[0] +=  p.Quantity +"x " + p.ProductName + " - " + (p.ProductPrice * p.Quantity) + " (" + p.ProductPrice + " per)" + "\n";
+    //        }
+    //        else
+    //        {
+    //            cart[0] += p.Quantity + "x " + p.ProductName +  " - " + (p.ProductPrice * p.Quantity) + "\n";
+    //        }
+    //    }
+    //    cart[1] += "\n" + TotalPrice + ",-";
+
+    //    return cart;
+    //}
 }
