@@ -2,9 +2,6 @@
 
 namespace ShoppingCart;
 
-//should contain a list of CartItems
-//needs a method to produce and show the Total Price for the Cart as well as price for multiple
-//.. of the same item. 
 public class Cart
 
 {
@@ -17,7 +14,7 @@ public class Cart
         TotalPrice = 0;
     }
 
-    public void Add(CartItem item)
+    public void Buy(CartItem item, int amount)
     {
         if (ShoppingCart.Contains(item))
         {
@@ -48,8 +45,8 @@ public class Cart
         
         Console.WriteLine("Du kjøpte: \n");
         foreach (var i in ShoppingCart)
-        { 
-            Console.WriteLine($"{i.Product.ProductName} x{i.Count} = {TotalForThisItem(i)}kr ({i.Product.ProductPrice}kr stk)");
+        {
+            i.CheckoutSelf(i);
             TotalPrice += i.Product.ProductPrice * i.Count;
         }
         Console.WriteLine($"\nDin total er: {TotalPrice}kr. Thank you for shopping with us!");
