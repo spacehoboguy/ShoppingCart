@@ -1,18 +1,13 @@
 ﻿using ShoppingCart;
 
-//Skriv mer objektorientert,trekke ut de rette klassene
-//innkapsling, dvs. bruk mest mulig private objektvariable
-//programmet skal gjøre akkurat det samme som må
-//dette blir istedenfor en ny codealong.
-//Send meg github-lenke når du er 60%-80% ferdig
-
-//need 3 classes
-//Det er fint å trekke ut Product og Cart som klasser.
-//Men det kan dras enda lenger. Istedenfor to separate lister for Counts og Products,
-//så kan du lage en klasse CartItem som har både et produkt og et antall.
-//Da kan du klare deg med en liste i Cart - en liste av CartItems.
-//Innholdet av løkka i ShowCart kan du da trekke ut som en metode som hører hjemme i CartItem. 
-
+/*Improvements to make*/
+//Istedenfor metoden  Add i Cart, vil jeg ha en metode Buy som tar to parametre: 
+// - et produkt og et antall. Så gjør den som nå, endrer eksisterende cart item eller lager nytt.
+//Inne i løkken i Checkout: flytt til metode i CartItem.
+//Samme med TotalForThisItem - flytt til metode i CartItem
+//bruk private objektvariabler så langt du får til.
+//Om det ikke går, bruker du public property med kun get, og om ikke det går,
+//bruker du public property med private set.
 void ShoppingCartDemo ()
         {
             //initialize products in store
