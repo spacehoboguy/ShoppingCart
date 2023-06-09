@@ -12,15 +12,15 @@ public class CartItem //should contain Product and ProductCount
         Count = 1;
     }
 
-    public void Buy(CartItem, Cart shoppingCart)
+    public void Buy(CartItem item, int amount)
     {
-        if (CartItem)
+        if (item.Count>0)
         {
-            CartItem.Count++;
+            item.Count++;
         }
         else
         {
-            ShoppingCart.Add(item);
+            ShoppingCart.Add();
         }
     }
 
