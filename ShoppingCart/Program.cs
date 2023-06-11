@@ -18,25 +18,15 @@ void ShoppingCartDemo ()
             //initialize a cart for user
             var myShoppingCart = new Cart();
 
-            //initializing cartItems, could be better maybe?
-            var a = new CartItem(apple); 
-            var b = new CartItem(orange); 
-            var c = new CartItem(mango);
 
             //user adding items to their cart
-            myShoppingCart.Add(a);
-            myShoppingCart.Add(a);
-            myShoppingCart.Add(b);
-            myShoppingCart.Add(b);
-            myShoppingCart.Add(a);
-            myShoppingCart.Add(c);
+            myShoppingCart.Buy(apple,1);
+            myShoppingCart.Buy(mango, 4);
+            myShoppingCart.Buy(orange, 1);
+            
 
             //user checking out cart
             myShoppingCart.Checkout();
         }
-
 ShoppingCartDemo();
-
-
-//SimpleShoppingCartDemo.Run();
 

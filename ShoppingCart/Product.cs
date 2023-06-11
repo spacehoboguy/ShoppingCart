@@ -4,8 +4,9 @@
 public class Product
 
 {
-    public string ProductName { get; private set; }
-    public int ProductPrice { get; private set; }
+    public string ProductName { get; }
+
+    public int ProductPrice {get; }
     //public int Quantity { get; set; }
 
     public Product(string productName, int productPrice)
