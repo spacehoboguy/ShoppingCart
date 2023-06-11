@@ -1,9 +1,11 @@
-﻿namespace ShoppingCart;
+﻿using Microsoft.VisualBasic;
 
-public class CartItem //should contain Product and ProductCount
+namespace ShoppingCart;
+
+public class CartItem
 {
     public Product Product { get; }
-    public int Count { get; set; }
+    public int Count { get; private set; }
     private int TotalPriceForItem { get; set; }
 
     public CartItem(Product product)
@@ -12,21 +14,15 @@ public class CartItem //should contain Product and ProductCount
         Count = 1;
     }
 
-    public void Buy(CartItem item, int amount)
+    public void SetAmount(int amount)
     {
-        if (item.Count>0)
-        {
-            item.Count++;
-        }
-        else
-        {
-            ShoppingCart.Add();
-        }
+        Count=amount;
     }
-
-    private void CheckoutSelf()
+   
+    public void CheckoutSelf()
     {
         Console.WriteLine($"{Product.ProductName} x{Count} = {TotalForThisItem()}kr ({Product.ProductPrice}kr stk)");
+        TotalPriceForItem = TotalForThisItem();
     }
     private int TotalForThisItem()
     {
