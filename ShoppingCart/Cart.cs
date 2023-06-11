@@ -50,24 +50,4 @@ public class Cart
         total = item.Product.ProductPrice * item.Count;
         return total;
     }
-
-//private string[] GetCartInfo()
-        //{
-        //    string[] cart = new string[2];
-        //    foreach (var p in Products)
-        //    {
-        //        if(p.Quantity > 1)
-        //        {
-        //            cart[0] +=  p.Quantity +"x " + p.ProductName + " - " + (p.ProductPrice * p.Quantity) + " (" + p.ProductPrice + " per)" + "\n";
-        //        }
-        //        else
-        //        {
-        //            cart[0] += p.Quantity + "x " + p.ProductName +  " - " + (p.ProductPrice * p.Quantity) + "\n";
-        //        }
-        //    }
-        //    cart[1] += "\n" + TotalPrice + ",-";
-
-        //    return cart;
-        //}
-    
 }
