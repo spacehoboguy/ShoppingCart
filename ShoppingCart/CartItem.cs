@@ -1,33 +1,28 @@
-﻿using Microsoft.VisualBasic;
-
-namespace ShoppingCart;
+﻿namespace ShoppingCart;
 
 public class CartItem
 {
     public Product Product { get; }
-    public int Count { get; private set; }
-    private int TotalPriceForItem { get; set; }
+    private int _count;
 
     public CartItem(Product product)
     {
         Product = product;
-        Count = 1;
+        _count = 1;
     }
 
     public void SetAmount(int amount)
     {
-        Count=amount;
+        _count = amount;
     }
    
     public void CheckoutSelf()
     {
-        Console.WriteLine($"{Product.ProductName} x{Count} = {TotalForThisItem()}kr ({Product.ProductPrice}kr stk)");
-        TotalPriceForItem = TotalForThisItem();
+        Console.WriteLine($"{Product.ProductName} x{_count} = {TotalForThisItem()}kr ({Product.ProductPrice}kr stk)");
     }
-    private int TotalForThisItem()
+
+    public int TotalForThisItem()
     {
-        int total = 0;
-        total = Product.ProductPrice * Count;
-        return total;
+        return Product.ProductPrice * _count;
     }
 }

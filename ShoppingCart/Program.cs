@@ -18,15 +18,12 @@ void ShoppingCartDemo ()
             //initialize a cart for user
             var myShoppingCart = new Cart();
 
-
             //user adding items to their cart
             myShoppingCart.Buy(apple,1);
             myShoppingCart.Buy(mango, 4);
             myShoppingCart.Buy(orange, 1);
             
-
             //user checking out cart
             myShoppingCart.Checkout();
         }
 ShoppingCartDemo();
-
