@@ -15,25 +15,26 @@ public class Cart
     public void Buy(Product product, int amount)
     {
 
-        CartItem? existingItem = ShoppingCart.FirstOrDefault(item => item.Product == product);
+        var existingItem = ShoppingCart.FirstOrDefault(item => item.Product == product);
 
         if (existingItem == null)
         {
             var newCartItem = new CartItem(product);
-            newCartItem.SetAmount(amount);
+            newCartItem.IncreaseAmount(amount);
             ShoppingCart.Add(newCartItem);
         }
-        else
-        {
-            existingItem.SetAmount(amount);
-        }
+        else existingItem.IncreaseAmount(amount);
     }
 
     public void Checkout()
     {
-        if (ShoppingCart.Count != 0)
+        if (ShoppingCart.Count == 0)
         {
-            Console.WriteLine("Du kjøpte: \n");
+            Console.WriteLine("Din Handlekurv er tom.");
+        }
+        else
+        {
+            Console.WriteLine("Din Handlekurv: \n");
             foreach (var i in ShoppingCart)
             {
                 i.CheckoutSelf();
@@ -41,10 +42,6 @@ public class Cart
             }
 
             Console.WriteLine($"\nDin total er: {TotalPrice}kr.\nThank you for shopping with us!");
-        }
-        else
-        {
-            Console.WriteLine("Din Handlekurv er tom.");
         }
     }
 } 
