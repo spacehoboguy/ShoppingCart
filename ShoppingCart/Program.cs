@@ -20,6 +20,7 @@ void ShoppingCartDemo ()
 
             //user adding items to their cart
             myShoppingCart.Buy(apple,1);
+            myShoppingCart.Buy(apple,2);
             myShoppingCart.Buy(mango, 4);
             myShoppingCart.Buy(orange, 1);
             

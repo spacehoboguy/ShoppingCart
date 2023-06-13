@@ -19,7 +19,7 @@ public class Cart
 
         if (existingItem == null)
         {
-            CartItem? newCartItem = new CartItem(product);
+            var newCartItem = new CartItem(product);
             newCartItem.SetAmount(amount);
             ShoppingCart.Add(newCartItem);
         }
@@ -31,14 +31,20 @@ public class Cart
 
     public void Checkout()
     {
-
-        Console.WriteLine("Du kjøpte: \n");
-        foreach (var i in ShoppingCart)
+        if (ShoppingCart.Count != 0)
         {
-            i.CheckoutSelf();
-            TotalPrice += i.TotalForThisItem();
-        }
+            Console.WriteLine("Du kjøpte: \n");
+            foreach (var i in ShoppingCart)
+            {
+                i.CheckoutSelf();
+                TotalPrice += i.TotalForThisItem();
+            }
 
-        Console.WriteLine($"\nDin total er: {TotalPrice}kr.\nThank you for shopping with us!");
+            Console.WriteLine($"\nDin total er: {TotalPrice}kr.\nThank you for shopping with us!");
+        }
+        else
+        {
+            Console.WriteLine("Din Handlekurv er tom.");
+        }
     }
 } 

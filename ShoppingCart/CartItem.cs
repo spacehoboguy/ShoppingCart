@@ -8,12 +8,11 @@ public class CartItem
     public CartItem(Product product)
     {
         Product = product;
-        _count = 1;
     }
 
     public void SetAmount(int amount)
     {
-        _count = amount;
+        _count += amount;
     }
    
     public void CheckoutSelf()
