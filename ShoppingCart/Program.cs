@@ -22,8 +22,9 @@ void ShoppingCartDemo ()
             myShoppingCart.Buy(apple,1);
             myShoppingCart.Buy(apple,2);
             myShoppingCart.Buy(mango, 4);
+            myShoppingCart.Buy(apple, 4);
             myShoppingCart.Buy(orange, 1);
-            
+
             //user checking out cart
             myShoppingCart.Checkout();
         }

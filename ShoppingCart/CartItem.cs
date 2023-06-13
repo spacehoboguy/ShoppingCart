@@ -7,7 +7,9 @@ public class CartItem
 
     public CartItem(Product product)
     {
-        Product = product;
+        Product = product; 
+        // removed count initialize to 1 for each item.
+        //_count is set by SetAmount().
     }
 
     public void SetAmount(int amount)
